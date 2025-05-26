@@ -94,3 +94,114 @@ El archivo `parser.y` define la gramática del lenguaje y las reglas de producci
 
 El parser está diseñado para construir el árbol sintáctico y validar estructuras válidas, notificando errores con contexto detallado.
 
+
+
+---
+
+## Detalles del Analizador Léxico (`lexer.l`)
+
+Este archivo define los patrones para reconocer los siguientes tokens del lenguaje:
+
+- **SUM**: Detectado con el patrón `confluir`
+- **PROD**: Detectado con el patrón `produzcar`
+- **MAX**: Detectado con el patrón `maxar`
+- **MIN**: Detectado con el patrón `minar`
+- **INT**: Detectado con el patrón `runa_cronoentera`
+- **FLOAT**: Detectado con el patrón `runa_et`
+- **BOOL**: Detectado con el patrón `runa_umbralbooleana`
+- **STRING**: Detectado con el patrón `runa_arcadenal`
+- **VOID**: Detectado con el patrón `runa_vicvoid`
+- **IF**: Detectado con el patrón `amanecer_arcano_si`
+- **ELSE**: Detectado con el patrón `entonces_ocaso_arcano`
+- **WHILE**: Detectado con el patrón `v`
+- **FOR**: Detectado con el patrón `espiral_arcana`
+- **SWITCH**: Detectado con el patrón `or`
+- **CASE**: Detectado con el patrón `visi`
+- **DEFAULT**: Detectado con el patrón `eco`
+- **BREAK**: Detectado con el patrón `hexbreak`
+- **TRY**: Detectado con el patrón `gloriosa_evoluci`
+- **CATCH**: Detectado con el patrón `catarsis_arcana`
+- **ASSERT**: Detectado con el patrón `axioma_evolutivo`
+- **RETURN**: Detectado con el patrón `evolucionar`
+- **INT_LITERAL**: Detectado con el patrón `yylval`
+- **FLOAT_LITERAL**: Detectado con el patrón `yylval`
+- **BOOL_LITERAL**: Detectado con el patrón `cargada`
+- **BOOL_LITERAL**: Detectado con el patrón `agotada`
+- **STRING_LITERAL**: Detectado con el patrón `yylval`
+- **IDENTIFIER**: Detectado con el patrón `a`
+- **CADENA**: Reconoce textos entre comillas dobles, incluyendo secuencias de escape como `\n`, `\t`.
+- **COMENTARIOS**: Soporta comentarios de línea (`//`) y de bloque (`/* ... */`), que son ignorados.
+
+
+---
+
+## Detalles del Analizador Sintáctico (`parser.y`)
+
+Este archivo define la gramática del lenguaje, incluyendo tokens, reglas de producción y el símbolo inicial.
+
+### Tokens declarados:
+
+- `INT`
+- `FLOAT`
+- `BOOL`
+- `STRING`
+- `VOID`
+- `IF`
+- `ELSE`
+- `WHILE`
+- `FOR`
+- `SWITCH`
+- `CASE`
+- `DEFAULT`
+- `BREAK`
+- `TRY`
+- `CATCH`
+- `ASSERT`
+- `RETURN`
+- `SUM`
+- `PROD`
+- `MAX`
+- `MIN`
+- `ASSIGN`
+- `REL_OP`
+- `OR`
+- `AND`
+- `LPAREN`
+- `RPAREN`
+- `LBRACE`
+- `RBRACE`
+- `LBRACKET`
+- `RBRACKET`
+- `SEMICOLON`
+- `COMMA`
+- `COLON`
+
+### Reglas de producción definidas:
+
+- `argument`
+- `argument_list`
+- `assert_statement`
+- `assignment`
+- `block`
+- `case_list`
+- `control_structure`
+- `declaration_or_statement`
+- `expr_list`
+- `expression`
+- `for_init`
+- `for_statement`
+- `function_declaration`
+- `if_statement`
+- `list`
+- `matrix`
+- `matrix_rows`
+- `parameter`
+- `parameter_list`
+- `program`
+- `switch_statement`
+- `try_statement`
+- `type`
+- `variable_declaration`
+- `while_statement`
+
+También se incluye manejo de errores sintácticos con la directiva especial `error`, que permite capturar y reportar errores gramaticales durante el análisis.
