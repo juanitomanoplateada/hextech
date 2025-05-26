@@ -1,0 +1,30 @@
+runa_cronoentera duplicar(runa_cronoentera n) {
+    evolucionar n * 2?
+}
+
+runa_cronoentera duplicar(runa_etérflotante n) {
+    evolucionar n * 2?
+}
+
+runa_cronoentera factorial(runa_cronoentera n) {
+    amanecer_arcano_si (n <= 1) {
+        evolucionar 1?
+    } entonces_ocaso_arcano {
+        evolucionar n * factorial(n - 1)?
+    }
+}
+
+runa_cronoentera operar(runa_cronoentera a, runa_cronoentera b) {
+    runa_cronoentera interno(runa_cronoentera x) {
+        evolucionar x + 100?
+    }
+    evolucionar interno(a) + b?
+}
+
+runa_cronoentera ejecutar() {
+    runa_cronoentera r1 = duplicar(3)?
+    runa_cronoentera r2 = duplicar(n = 4.5)?
+    runa_cronoentera r3 = factorial(5)?
+    runa_cronoentera r4 = operar(1, 2)?
+    evolucionar r1 + r2 + r3 + r4?
+}

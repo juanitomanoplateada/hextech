@@ -1,0 +1,31 @@
+runa_cronoentera energia = -10 + 5 * 2?
+runa_etérflotante[] flujos = [1.5, -2.3, 0.0]?
+runa_cronoentera[][] matriz = [[1, 2], [3, 4]]?
+
+runa_cronoentera resultado = confluir([energia, 3, -1])?
+runa_etérflotante carga = produzcar(flujos)?
+runa_cronoentera maximo = maxar(matriz)?
+runa_cronoentera minimo = minar([[8, -5], [7, 2]])?
+
+gloriosa_evolución {
+    axioma_evolutivo(resultado > 0)?
+    runa_cronoentera operacion(runa_cronoentera base) {
+        evolucionar base * 3?
+    }
+    runa_cronoentera r = operacion(5)?
+} catarsis_arcana (runa_arcadenal error) {
+    runa_arcadenal mensaje = "fallo mágico"?
+}
+
+runa_cronoentera contar(runa_cronoentera limite) {
+    amanecer_arcano_si (limite <= 0) {
+        evolucionar 0?
+    } entonces_ocaso_arcano {
+        evolucionar limite + contar(limite - 1)?
+    }
+}
+
+runa_cronoentera main() {
+    runa_cronoentera total = contar(5)?
+    evolucionar total?
+}

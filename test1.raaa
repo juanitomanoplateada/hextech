@@ -1,0 +1,23 @@
+runa_cronoentera x     = 10?
+runa_etérflotante y     = 3.14?
+runa_umbralbooleana flag  = cargada?
+runa_arcadenal msg   = "hola"?
+
+runa_cronoentera[]    v_int    = [1, 2, 3]?
+runa_etérflotante[]   v_float  = [1.1, 2.2, 3.3]?
+runa_umbralbooleana[] v_bool   = [cargada, agotada, cargada]?
+runa_arcadenal[]      v_string = ["uno", "dos", "tres"]?
+
+runa_cronoentera[][]    m_int    = [[1, 2], [3, 4]]?
+runa_etérflotante[][]   m_float  = [[1.1, 2.2], [3.3, 4.4]]?
+runa_umbralbooleana[][] m_bool   = [[cargada, agotada], [agotada, cargada]]?
+runa_arcadenal[][]      m_string = [["a", "b"], ["c", "d"]]?
+
+v_int[0]    = 10?
+v_float[1]  = 9.81?
+v_bool[2]   = agotada?
+v_string[0] = "hola mundo"?
+
+m_int[0][1]    = 42?
+m_float[1][0]  = 6.28?
+m_bool[1][1]   = cargada?

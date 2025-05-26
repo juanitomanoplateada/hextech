@@ -1,0 +1,33 @@
+runa_cronoentera x = 10?
+
+amanecer_arcano_si (x > 5) {
+    runa_cronoentera x = 1?
+    amanecer_arcano_si (x == 1) {
+        runa_arcadenal mensaje = "ok"?
+    } entonces_ocaso_arcano {
+        runa_arcadenal mensaje = "fail"?
+    }
+} entonces_ocaso_arcano {
+    runa_umbralbooleana x = agotada?
+}
+
+espiral_arcana (runa_cronoentera i = 0? i < 3? i = i + 1) {
+    runa_cronoentera x = i * 2?
+}
+
+vórtice_insano (cargada) {
+    runa_cronoentera k = 0?
+    hexbreak?
+}
+
+oráculo (x) {
+    visión 5: {
+        runa_arcadenal r = "cinco"?
+    }
+    visión 10: {
+        runa_arcadenal r = "diez"?
+    }
+    eco: {
+        runa_arcadenal r = "otro"?
+    }
+}

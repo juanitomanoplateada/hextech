@@ -1,0 +1,23 @@
+gloriosa_evolución {
+    runa_etérflotante x = 3.0?
+    axioma_evolutivo(x > 0)?
+} catarsis_arcana (runa_etérflotante e) {
+    runa_arcadenal msg = "error de ejecución"?
+}
+
+gloriosa_evolución {
+    runa_etérflotante y = -5.0?
+    axioma_evolutivo(y > 0)?
+} catarsis_arcana (runa_etérflotante err) {
+    runa_arcadenal msg = "valor inválido detectado"?
+}
+
+runa_cronoentera dividir(runa_cronoentera a, runa_cronoentera b) {
+    axioma_evolutivo(b != 0)?
+    evolucionar a / b?
+}
+
+runa_cronoentera main() {
+    runa_cronoentera res = dividir(10, 0)?
+    evolucionar res?
+}
