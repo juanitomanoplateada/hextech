@@ -65,6 +65,63 @@ void register_function_signature(const char* name, char* return_type, char** par
 
 char* param_type_buffer[MAX_PARAMS];
 int param_type_count = 0;
+
+#define MAX_VARIABLES 1000
+
+typedef struct {
+    char* name;
+    char* type;
+    int scope_level;
+} Variable;
+
+#define MAX_SCOPE_DEPTH 1000
+int scope_stack[MAX_SCOPE_DEPTH];
+int scope_depth = 0;
+int scope_counter = 1;
+
+int current_scope() {
+    if (scope_depth == 0) return 0;
+    return scope_stack[scope_depth - 1];
+}
+
+void enter_scope() {
+    scope_stack[scope_depth++] = scope_counter++;
+}
+
+void exit_scope() {
+    if (scope_depth > 0) scope_depth--;
+}
+
+Variable variable_table[MAX_VARIABLES];
+int variable_count = 0;
+
+int is_same_variable_in_scope(const char* name, const char* type, int scope) {
+    for (int i = 0; i < variable_count; i++) {
+        if (variable_table[i].scope_level == scope &&
+            strcmp(variable_table[i].name, name) == 0 &&
+            strcmp(variable_table[i].type, type) == 0) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+void register_variable(const char* name, const char* type) {
+    int scope = current_scope();
+    for (int i = 0; i < variable_count; i++) {
+        if (variable_table[i].scope_level == scope &&
+            strcmp(variable_table[i].name, name) == 0 &&
+            strcmp(variable_table[i].type, type) == 0) {
+            fprintf(stderr, "Error: Redefinición de variable '%s' con el mismo tipo en el mismo ámbito en la línea %d\n", name, yylineno);
+            exit(1);
+        }
+    }
+    variable_table[variable_count].name = strdup(name);
+    variable_table[variable_count].type = strdup(type);
+    variable_table[variable_count].scope_level = scope;
+    variable_count++;
+}
+
 %}
 
 %union {
@@ -104,9 +161,13 @@ int param_type_count = 0;
 %%
 
 program:
-      /* vacío */
-    | program declaration_or_statement
-    ;
+      declaration_or_statement_list
+;
+
+declaration_or_statement_list:
+      declaration_or_statement
+    | declaration_or_statement_list declaration_or_statement
+;
 
 declaration_or_statement:
       variable_declaration SEMICOLON
@@ -118,7 +179,8 @@ declaration_or_statement:
     | assert_statement
     | function_declaration
     | control_structure
-    ;
+    | block
+;
 
 function_declaration:
     type IDENTIFIER LPAREN parameter_list RPAREN block
@@ -158,9 +220,18 @@ type:
 
 variable_declaration:
       type IDENTIFIER ASSIGN expression
+      {
+          register_variable($2, $1);
+      }
     | type LBRACKET RBRACKET IDENTIFIER ASSIGN list
+      {
+          register_variable($4, $1); // arreglo unidimensional
+      }
     | type LBRACKET RBRACKET LBRACKET RBRACKET IDENTIFIER ASSIGN matrix
-    ;
+      {
+          register_variable($6, $1); // matriz
+      }
+;
 
 assignment:
       IDENTIFIER ASSIGN expression
@@ -245,12 +316,7 @@ matrix_rows:
     | matrix_rows COMMA list
     ;
 
-block:
-      LBRACE program RBRACE
-    ;
-
-assert_statement:
-      ASSERT LPAREN expression RPAREN SEMICOLON
+assert_statement: ASSERT LPAREN expression RPAREN SEMICOLON
     ;
 
 control_structure:
@@ -269,7 +335,17 @@ if_statement:
         yyerror("Error: condición inválida en if");
         yyclearin; yyerrok;
     }
-  ;
+;
+
+block:
+    {
+        enter_scope();
+    }
+    LBRACE declaration_or_statement_list RBRACE
+    {
+        exit_scope();
+    }
+;
 
 while_statement:
     WHILE LPAREN expression RPAREN block
