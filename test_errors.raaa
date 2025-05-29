@@ -1,0 +1,80 @@
+// ❌ Error léxico: palabra clave mal escrita
+runa_cronoenteera x = 5 ?
+
+// ❌ Error léxico: booleano mal escrito
+runa_umbralbooleana b = cargadoo ?
+
+// ❌ Error léxico: símbolo no reconocido
+runa_cronoentera a = 10 $ 2 ?
+
+// ❌ Error sintáctico: falta signo igual en asignación
+runa_cronoentera sin_asignar 10 ?
+
+// ❌ Error sintáctico: paréntesis mal cerrados en expresión
+runa_cronoentera mal_expr = (4 + 2 ?
+
+
+// ❌ Error sintáctico: expresión de reducción inválida
+runa_cronoentera s = confluir 1, 2, 3 ?
+
+// ❌ Error sintáctico: falta bloque en if
+amanecer_arcano_si (x > 0)
+    runa_cronoentera z = 1 ?
+
+// ❌ Error de ambigüedad resuelta (verificación de else mal emparejado)
+amanecer_arcano_si (x > 0) {
+    amanecer_arcano_si (x < 10) {
+        x = 1 ?
+    }
+} entonces_ocaso_arcano {
+    x = 2 ?
+}
+
+// ❌ Error sintáctico: while sin paréntesis
+vórtice_insano x > 5 {
+    x = x - 1 ?
+}
+
+// ❌ Error: declaración de función con parámetro sin tipo
+runa_cronoentera calcular(valor) {
+    evolucionar valor * 2 ?
+}
+
+// ❌ Error: función con paréntesis abiertos sin cerrar
+runa_cronoentera suma(runa_cronoentera a, runa_cronoentera b {
+    evolucionar a + b ?
+}
+
+// ❌ Error: parámetro nombrado sin nombre
+runa_cronoentera f(runa_cronoentera =) {
+    evolucionar 0 ?
+}
+
+// ❌ Error: uso de función no definida
+runa_cronoentera resultado = invocar_algo(4) ?
+
+// ❌ Error: try sin bloque catch
+gloriosa_evolución {
+    axioma_evolutivo(x > 0) ?
+}
+
+// ❌ Error: cadena mal cerrada
+runa_arcadenal saludo = "Hola mundo ?
+
+// ❌ Error: acceso a vector mal formado
+runa_cronoentera[] v = [1, 2, 3] ?
+runa_cronoentera pos = v[1 ?
+
+// ❌ Error: operador binario mal formado
+runa_cronoentera r = 5 + * 3 ?
+
+// ❌ Error: uso de símbolo incorrecto como separador
+runa_cronoentera fin = 0 ;
+
+
+// ❌ Error: switch sin casos
+oráculo (x) {
+}
+
+// ❌ Error: llamada a función sin paréntesis
+runa_cronoentera resultado = calcular ?

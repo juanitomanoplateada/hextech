@@ -1,5 +1,5 @@
 runa_cronoentera x     = 10?
-runa_etérflotante y     = 3.14?
+runa_etérflotante x     = 3.14?
 runa_umbralbooleana flag  = cargada?
 runa_arcadenal msg   = "hola"?
 
